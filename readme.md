@@ -3,7 +3,7 @@ entry in
 Settings > Session and Startup > Application Autostart 
 
 with field values
-Name: Conky
+Name: Conky  
 Description: Conky  
 Command:/home/\<user\>/.config/conky/conky_startup.sh
 
