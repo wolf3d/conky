@@ -1,0 +1,107 @@
+# Use Xft?
+use_xft yes
+xftfont Trebuchet MS:size=8
+xftalpha 0.8
+text_buffer_size 2048
+
+# Update interval in seconds
+update_interval 1
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus, xfce)
+    own_window yes
+    own_window_transparent yes
+    own_window_type override
+    own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 180 0
+
+# Draw shades?
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+#border_margin 5 # conky reported that there is no such parameter
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+default_color white
+own_window_colour white
+
+# Text alignment, other possible values are commented
+alignment top_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 35
+gap_y 50
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer none
+
+TEXT
+${font DroidSansMono:size=11}
+${hr 2}
+
+Kernel:  ${alignr}${kernel}
+
+Core0: ${cpu cpu0}% ${alignr}${cpubar 8,60 cpu0} ${cpu cpu0}%
+#$color${cpu cpu0}% (${execi 8 sensors | grep -A 1 'temp2' | cut -c13-16 | sed '/^$/d'}°C)
+$color(${execi 8 sensors | grep 'Core 0:' | cut -d ':' -f 2| cut -d '+' -f 2 | cut -d 'C' -f 1}C)
+
+Core1: ${cpu cpu1}% ${alignr}${cpubar 8,60 cpu1} ${cpu cpu1}%
+#$color${cpu cpu1}% (${execi 8 sensors | grep -A 1 'temp2' | cut -c13-16 | sed '/^$/d'}°C)
+$color(${execi 8 sensors | grep 'Core 1:' | cut -d ':' -f 2| cut -d '+' -f 2 | cut -d 'C' -f 1}C)
+
+Mem: $memperc%
+$mem / $memmax ${alignr}${membar 8,60}
+
+Uptime: ${alignr}${uptime}
+
+${hr 2}${font}
+${alignc 35}${font DroidSansMono:size=26}${time %H:%M:%S}${font}
+${alignc}${time %a %d %b %Y}
+#${pre_exec cal }
+${hr 2}
+
+${font DroidSansMono:size=11}HDD: $hddtemp°C
+
+Home:
+${fs_free /home/wolf} / ${fs_size /home/wolf} ${alignr}${fs_bar 8,60 /home/wolf}
+
+System:
+${fs_free /} / ${fs_size /} ${alignr}${fs_bar 8,60 /}${font}
