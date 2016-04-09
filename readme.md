@@ -4,7 +4,7 @@ Settings > Session and Startup > Application Autostart
 
 with field values
 Name: Conky
-Description: Conky
-Command:/home/<user>/.config/conky/conky_startup.sh
+Description: Conky  
+Command:/home/\<user\>/.config/conky/conky_startup.sh
 
-replace <user> with particular user name
+replace \<user\> with particular user name
