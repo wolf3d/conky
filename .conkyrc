@@ -104,4 +104,7 @@ Home:
 ${fs_free /home/wolf} / ${fs_size /home/wolf} ${alignr}${fs_bar 8,60 /home/wolf}
 
 System:
-${fs_free /} / ${fs_size /} ${alignr}${fs_bar 8,60 /}${font}
+${fs_free /} / ${fs_size /} ${alignr}${fs_bar 8,60 /}
+
+Development:
+${fs_free /development} / ${fs_size /development} ${alignr}${fs_bar 8,60 /development}${font}
